@@ -19,6 +19,7 @@ contract SocialMedia {
         string creator;
         uint likes;
         Comments[] comments;
+        string contentType;
     }
 
     uint public postCount = 0;
@@ -31,7 +32,7 @@ contract SocialMedia {
         return bytes(usernames[_wallet]).length > 0;
     }
 
-    function createPost(IERC721 _nft, uint _tokenId) external {
+    function createPost(IERC721 _nft, uint _tokenId, string memory _contentType) external {
         require(walletExists(msg.sender), "User does not exist");
         
         Post storage newPost = allPosts[postCount];
@@ -40,6 +41,7 @@ contract SocialMedia {
         newPost.tokenId = _tokenId;
         newPost.creator = usernames[msg.sender];
         newPost.likes = 0;
+        newPost.contentType=_contentType;
         postCount++;
         userPosts[msg.sender].push(newPost);
     }
