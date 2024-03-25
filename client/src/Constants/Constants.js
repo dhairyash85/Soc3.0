@@ -46,6 +46,25 @@ const SocialMediaABI= [
     {
       "inputs": [
         {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "allUsers",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "username",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
           "internalType": "uint256",
           "name": "_postId",
           "type": "uint256"
@@ -93,6 +112,19 @@ const SocialMediaABI= [
         }
       ],
       "name": "createUser",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_user",
+          "type": "address"
+        }
+      ],
+      "name": "followUser",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -293,7 +325,7 @@ const SocialMediaABI= [
       "stateMutability": "view",
       "type": "function"
     }
-]
+  ]
 const NFTABI=[
     {
       "inputs": [],
@@ -798,6 +830,6 @@ const NFTABI=[
       "type": "function"
     }
 ]
-const SocialMediaAddress='0xB77a2D01234dA81b88f32D619f5a38ec05fca7C1'
+const SocialMediaAddress='0x3Be0372F3bd7b5e59251e2653674821f02dcD232'
 const NFTAddress='0x2D2DAA7c481eF7dD47dfC9493632dd945Aa01C8B'
 export {SocialMediaABI, SocialMediaAddress, NFTABI, NFTAddress}

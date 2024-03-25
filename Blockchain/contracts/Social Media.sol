@@ -11,7 +11,12 @@ contract SocialMedia {
         uint postId;
         string comment;
     }
-
+    struct User{
+        string username;
+        address[] followers;
+        address[] following;
+    }
+    mapping(address=>User) public allUsers;
     struct Post {
         uint postId;
         IERC721 nft;
@@ -49,6 +54,16 @@ contract SocialMedia {
     function likePost(uint _postId) external {
         allPosts[_postId].likes++;
         likedPosts[msg.sender].push(allPosts[_postId]);
+    }
+    
+    // function unlikePost(uint _postId)
+
+    function followUser(address _user) external {
+        require(walletExists(_user), "User doesn't exist");
+        User storage user=allUsers[_user];
+        user.followers.push(msg.sender);
+        User storage follower=allUsers[msg.sender];
+        follower.followers.push(_user);
     }
 
     function commentPost(uint _postId, string memory _comment) external{
