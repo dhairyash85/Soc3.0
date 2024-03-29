@@ -3,7 +3,6 @@ import axios from "axios";
 import addressContext from "../Context/AddressContext";
 const Upload = () => {
   const [selectedFile, setSelectedFile] = useState(null);
-  const [name, setName] = useState("");
   const [description, setDescription] = useState('');
   const context=useContext(addressContext)
   const {nft, soc}=context
@@ -16,7 +15,7 @@ const Upload = () => {
         url: "https://api.pinata.cloud/pinning/pinFileToIPFS",
         data: {
           file: selectedFile,
-          name: name,
+          name: "File",
           description: description,
         },
         headers: {
@@ -38,30 +37,22 @@ const Upload = () => {
 
       await(await nft.mint(IpfsHash)).wait()
       const tokenid=await nft.tokenCount();
-      await (await nft.setApprovalForAll(soc.address, true)).wait();
-      await(await soc.createPost(nft.address, tokenid, "Photo")).wait()
+      await(await soc.createPost(nft.address, tokenid, "Photo", "File", description)).wait()
       console.log("SUUUUUUCCCCC")
     }catch(e){
       console.log("EERRROOOORRRR: ", e)
     }
   }
   return (
-    <div className="text-center text-white">
+    <div className="text-center text-white  h-dvh">
       <form>
         <input type="file" onChange={(e)=>setSelectedFile(e.target.files[0])} name="file" />
         <br />
         <input
           type="text"
           name="url"
-          value={name}
-          onChange={(e)=>setName(e.target.value)}
-          className="text-black"
-        />
-        <input
-          type="text"
-          name="description"
           value={description}
-          onChange={(e) => setDescription(e.target.value)}
+          onChange={(e)=>setDescription(e.target.value)}
           className="text-black"
         />
         <br></br>

@@ -1,4 +1,4 @@
-const SocialMediaABI= [
+const SocialMediaABI=[
   {
     "inputs": [
       {
@@ -9,6 +9,16 @@ const SocialMediaABI= [
     ],
     "name": "allPosts",
     "outputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
       {
         "internalType": "uint256",
         "name": "postId",
@@ -96,6 +106,16 @@ const SocialMediaABI= [
         "internalType": "string",
         "name": "_contentType",
         "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_description",
+        "type": "string"
       }
     ],
     "name": "createPost",
@@ -158,6 +178,16 @@ const SocialMediaABI= [
     "name": "likedPosts",
     "outputs": [
       {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
+      {
         "internalType": "uint256",
         "name": "postId",
         "type": "uint256"
@@ -210,6 +240,16 @@ const SocialMediaABI= [
     "outputs": [
       {
         "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
           {
             "internalType": "uint256",
             "name": "postId",
@@ -320,6 +360,16 @@ const SocialMediaABI= [
     ],
     "name": "userPosts",
     "outputs": [
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "description",
+        "type": "string"
+      },
       {
         "internalType": "uint256",
         "name": "postId",
@@ -897,6 +947,6 @@ const NFTABI=[
       "type": "function"
     }
 ]
-const SocialMediaAddress='0xB4484fa6006A36c7b12bc241079f224947653C6e'
-const NFTAddress='0x2D2DAA7c481eF7dD47dfC9493632dd945Aa01C8B'
+const SocialMediaAddress='0xa6C47503885d959d981b193fc21265eF5BdC2154'
+const NFTAddress='0xEC6DE4464E364d74fCD573369e1ae9564A5Af937'
 export {SocialMediaABI, SocialMediaAddress, NFTABI, NFTAddress}

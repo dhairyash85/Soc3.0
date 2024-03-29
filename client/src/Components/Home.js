@@ -3,11 +3,12 @@ import addressContext from "../Context/AddressContext";
 const Home = () => {
   const context = useContext(addressContext);
   const [newUser,setNewUser]=useState('')
-  const { isConnected, soc, isUser, username } = context;
+  const { isConnected, soc, isUser, username, nft } = context;
   const createUser = async (e) => {
     try {
       e.preventDefault();
       await soc.createUser(newUser);
+      await (await nft.setApprovalForAll(soc.address, true)).wait();
     } catch (err) {
       console.log("ERROR", err);
     }

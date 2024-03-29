@@ -18,6 +18,8 @@ contract SocialMedia {
     }
     mapping(address=>User) public allUsers;
     struct Post {
+        string name;
+        string description;
         uint postId;
         IERC721 nft;
         uint tokenId;
@@ -37,11 +39,13 @@ contract SocialMedia {
         return bytes(usernames[_wallet]).length > 0;
     }
 
-    function createPost(IERC721 _nft, uint _tokenId, string memory _contentType) external {
+    function createPost(IERC721 _nft, uint _tokenId, string memory _contentType, string memory _name, string memory _description) external {
         require(walletExists(msg.sender), "User does not exist");
         
         Post storage newPost = allPosts[postCount];
-        newPost.postId = postCount;
+        newPost.name = _name;
+        newPost.description = _description;
+        newPost.postId = postCount; 
         newPost.nft = _nft;
         newPost.tokenId = _tokenId;
         newPost.creator = usernames[msg.sender];
