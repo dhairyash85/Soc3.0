@@ -73,6 +73,14 @@ contract SocialMedia {
         userComments[msg.sender].push(_temp);
     }
 
+    function returnPosts() external view returns(Post[] memory){
+        Post[] memory posts=new Post[](postCount);
+        for(uint i=0;i<postCount;i++){
+            posts[i]=allPosts[i];
+        }
+        return posts;
+    }
+
     function createUser(string memory _username) external {
         require(!walletExists(msg.sender), "User already exists");
         usernames[msg.sender] = _username;

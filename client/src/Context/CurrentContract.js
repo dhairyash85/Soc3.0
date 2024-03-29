@@ -26,8 +26,10 @@ const CurrentContract = (props) => {
       useEffect(()=>{
         if(isConnected){
         const checkWallet=async()=>{
+            console.log("YAYAYAY")
             const res=await soc.walletExists(account);
             setIsUser(res)
+            console.log(res)
             if(res){
                 soc.usernames(account).then((name)=>{setUsername(name)})
             }
