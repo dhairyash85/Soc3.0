@@ -1,4 +1,4 @@
-const SocialMediaABI=[
+const SocialMediaABI= [
   {
     "inputs": [
       {
@@ -237,6 +237,89 @@ const SocialMediaABI=[
   {
     "inputs": [],
     "name": "returnPosts",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "postId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "contract IERC721",
+            "name": "nft",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "creator",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "likes",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "commenter",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "postId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "comment",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct SocialMedia.Comments[]",
+            "name": "comments",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "string",
+            "name": "contentType",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct SocialMedia.Post[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address[]",
+        "name": "_users",
+        "type": "address[]"
+      }
+    ],
+    "name": "returnUserPost",
     "outputs": [
       {
         "components": [
@@ -947,6 +1030,8 @@ const NFTABI=[
       "type": "function"
     }
 ]
-const SocialMediaAddress='0xa6C47503885d959d981b193fc21265eF5BdC2154'
-const NFTAddress='0xEC6DE4464E364d74fCD573369e1ae9564A5Af937'
+const SocialMediaAddress='0x5815f426c2EeA200A96aa78A8A46cff6f8a1e92f'
+const NFTAddress='0x04A555fFF2Fcc5eB271C0f63c2Da210084cB7F8f'
 export {SocialMediaABI, SocialMediaAddress, NFTABI, NFTAddress}
+
+

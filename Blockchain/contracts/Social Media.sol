@@ -89,4 +89,15 @@ contract SocialMedia {
         require(!walletExists(msg.sender), "User already exists");
         usernames[msg.sender] = _username;
     }
+    function returnUserPost(address[] memory _users) view external returns(Post[] memory){
+        Post[] memory posts=new Post[](postCount);
+        uint c=0;
+        for(uint i=0;i<_users.length;i++){
+            for(uint j=0;j<userPosts[_users[i]].length;j++){
+                posts[c]=userPosts[_users[i]][j];
+                c++ ;  
+            }
+        }
+        return posts;
+    }
 }
