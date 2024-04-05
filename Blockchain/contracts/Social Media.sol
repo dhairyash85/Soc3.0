@@ -34,6 +34,9 @@ contract SocialMedia {
     mapping(address => Post[]) public userPosts;
     mapping(uint => Post) public allPosts;
     mapping(address => Post[]) public likedPosts;
+    function returnUser(address _user) public view returns(string memory){
+        return usernames[_user];
+    }
 
     function walletExists(address _wallet) public view returns (bool) {
         return bytes(usernames[_wallet]).length > 0;

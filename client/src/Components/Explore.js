@@ -18,10 +18,15 @@ const Explore = () => {
   }, [isConnected, soc])
   return (
     <div className='h-dvh text-white'>
+      <div className='flex gap-4 justify-between'>
+        <form>
+          <input type="text" placeholder={`Search by title or author...`}/>
+          <button type='submit' className=' border-white'>Search</button>
+        </form>
+      </div>
       {
         posts && (
           <div className='px-10 grid sm:grid-cols-1 sm:place-content-center md:grid-cols-2 lg:grid-cols-3 sm:grid-y-3 gap-y-5 gap-x-5'>
-
           {
             posts.map((post)=><Post post={post} />)
           }
