@@ -64,7 +64,7 @@ const Home = () => {
           </div>
 
           <button
-            className=" w-28 truncate bg-white hover:ring-white hover:bg-transparent hover:text-white rounded-md text-sm transition-colors disabled:pointer-events-none disabled:opacity-50 border border-input h-10 px-2 py-2 mt-3 mr-5 sm:mt-0 "
+            className=" w-28 truncate bg-white hover:ring-white text-black hover:bg-transparent hover:text-white rounded-md text-sm transition-colors disabled:pointer-events-none disabled:opacity-50 border border-input h-10 px-2 py-2 mt-3 mr-5 sm:mt-0 "
             onClick={disconnectWallet}
           >
             {/* <p className="flex justify-start text-start "></p> */}
@@ -90,7 +90,7 @@ const Home = () => {
                     </div>
                     <div className="mt-10 sm:flex sm:justify-center lg:justify-start">
 
-                      <button onClick={connectToWallet} className="inline-flex bg-white hover:ring-white hover:bg-transparent hover:text-white  items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto">
+                      <button onClick={connectToWallet} className="inline-flex bg-white text-black hover:ring-white hover:bg-transparent hover:text-white  items-center justify-center rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 border border-input bg-background hover:bg-accent hover:text-accent-foreground h-10 px-4 py-2 mt-3 w-full sm:mt-0 sm:ml-3 sm:w-auto">
                         Connect To Wallet
                       </button>
                     </div>

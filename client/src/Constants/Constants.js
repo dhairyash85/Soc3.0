@@ -152,6 +152,89 @@ const SocialMediaABI= [
   {
     "inputs": [
       {
+        "internalType": "address",
+        "name": "_user",
+        "type": "address"
+      }
+    ],
+    "name": "getPostsForUser",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "string",
+            "name": "name",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "description",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "postId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "contract IERC721",
+            "name": "nft",
+            "type": "address"
+          },
+          {
+            "internalType": "uint256",
+            "name": "tokenId",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "creator",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "likes",
+            "type": "uint256"
+          },
+          {
+            "components": [
+              {
+                "internalType": "string",
+                "name": "commenter",
+                "type": "string"
+              },
+              {
+                "internalType": "uint256",
+                "name": "postId",
+                "type": "uint256"
+              },
+              {
+                "internalType": "string",
+                "name": "comment",
+                "type": "string"
+              }
+            ],
+            "internalType": "struct SocialMedia.Comments[]",
+            "name": "comments",
+            "type": "tuple[]"
+          },
+          {
+            "internalType": "string",
+            "name": "contentType",
+            "type": "string"
+          }
+        ],
+        "internalType": "struct SocialMedia.Post[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
         "internalType": "uint256",
         "name": "_postId",
         "type": "uint256"
@@ -322,9 +405,26 @@ const SocialMediaABI= [
     "name": "returnUser",
     "outputs": [
       {
-        "internalType": "string",
+        "components": [
+          {
+            "internalType": "string",
+            "name": "username",
+            "type": "string"
+          },
+          {
+            "internalType": "address[]",
+            "name": "followers",
+            "type": "address[]"
+          },
+          {
+            "internalType": "address[]",
+            "name": "following",
+            "type": "address[]"
+          }
+        ],
+        "internalType": "struct SocialMedia.User",
         "name": "",
-        "type": "string"
+        "type": "tuple"
       }
     ],
     "stateMutability": "view",
@@ -1049,7 +1149,7 @@ const NFTABI=[
       "type": "function"
     }
 ]
-const SocialMediaAddress='0x8B6B73aa59D128BfC3039A5bc0BcBCCc01093DAE'
+const SocialMediaAddress='0x70736Fc1fd0D4d472d94e2Ac3A60e858cd7Bd789'
 const NFTAddress='0x04A555fFF2Fcc5eB271C0f63c2Da210084cB7F8f'
 export {SocialMediaABI, SocialMediaAddress, NFTABI, NFTAddress}
 

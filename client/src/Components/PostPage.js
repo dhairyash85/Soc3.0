@@ -36,10 +36,10 @@ const PostPage = () => {
   }
   console.log(postId.postId);
   return (
-<div className="flex flex-col xl:flex-row items-center justify-center">
+<div className="flex flex-col xl:flex-row justify-stretch px-5 items-stretch pt-12">
   {post && (
-    <div className="sm:max-w-lg md:max-w-xl xl:max-w-2xl 2xl:max-w-4xl container bg-black rounded-xl shadow-lg">
-      <img className="w-full h-auto cursor-pointer" src={img} alt="" />
+    <div className="sm:max-w-lg md:max-w-xl xl:max-w-2xl 2xl:max-w-4xl container bg-black rounded-l-2xl shadow-lg">
+      <img className="w-full h-auto cursor-pointer rounded-tl-2xl " src={img} alt="" />
       <div className="flex flex-col sm:flex-row md:flex-row lg:flex-row p-4 justify-between">
         <div className="flex items-center space-x-2">
           <h2 className="text-white font-extrabold">{post.creator}: <span className=" font-normal text-white">{post.description}</span></h2>
@@ -69,15 +69,13 @@ const PostPage = () => {
     </div>
   )}
   
-  {comment && (
-    <div className="bg-black w-full min-h-full">
-
-      <div className="ml-2 flex items-end gap-2">
-        <textarea name='comment' rows='1' cols='90' placeholder='Add a comment...' />
-        <button className="bg-white">Comment</button>
+    <div className=" w-full min-h-full flex-col justify-stretch">
+      <div className=" bg-black min-h-full overflow-y-auto rounded-r-xl "></div>
+      <div className="ml-2 relative bottom-14 flex gap-2 px-3 bg-black border-t-2 pt-4">
+        <textarea className="rounded-lg px-2" name='comment' rows='1' cols='90' placeholder='Add a comment...' />
+        <button className="bg-white rounded-md text-black hover:text-white px-2 hover:bg-black">Comment</button>
       </div>
     </div>
-  )}   
 </div>
 
 

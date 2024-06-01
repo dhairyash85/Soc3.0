@@ -10,6 +10,7 @@ const CurrentContract = (props) => {
     const [soc, setSoc]=useState(null);
     const [isUser, setIsUser] = useState(false);
     const [username, setUsername]=useState('');
+    const [user, setUser]=useState([]);
     
       useEffect(()=>{
         if(isConnected){
@@ -32,13 +33,17 @@ const CurrentContract = (props) => {
             console.log(res)
             if(res){
                 soc.usernames(account).then((name)=>{setUsername(name)})
+                const us=await soc.returnUser(account)
+                console.log(us)
+                setUser(us)
             }
         }
             checkWallet().catch(e=>console.log(e))
+            
         }
       },[isConnected, account, isUser, soc])
   return (
-    <addressContext.Provider value={{isConnected, account, nft, soc, provider, isUser, username, setUsername, setIsUser, setAccount, setIsConnected, setProvider, setNFT, setSoc}}>{props.children}</addressContext.Provider>
+    <addressContext.Provider value={{isConnected, account, nft, soc, provider, isUser, username, user, setUser, setUsername, setIsUser, setAccount, setIsConnected, setProvider, setNFT, setSoc}}>{props.children}</addressContext.Provider>
   )
 }
 
