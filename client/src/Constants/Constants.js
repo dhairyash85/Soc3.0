@@ -1149,7 +1149,7 @@ const NFTABI=[
       "type": "function"
     }
 ]
-const SocialMediaAddress='0x70736Fc1fd0D4d472d94e2Ac3A60e858cd7Bd789'
+const SocialMediaAddress='0xcf4b9292c5F17bdEC0A59Df94E5f735a6fBd67cC'
 const NFTAddress='0x04A555fFF2Fcc5eB271C0f63c2Da210084cB7F8f'
 export {SocialMediaABI, SocialMediaAddress, NFTABI, NFTAddress}
 
