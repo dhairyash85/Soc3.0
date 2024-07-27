@@ -34,8 +34,8 @@ contract SocialMedia {
     mapping(address => Post[]) public userPosts;
     mapping(uint => Post) public allPosts;
     mapping(address => Post[]) public likedPosts;
-    function returnUser(address _user) public view returns(string memory){
-        return usernames[_user];
+    function returnUser(address _user) public view returns(User memory){
+        return allUsers[_user];
     }
 
     function walletExists(address _wallet) public view returns (bool) {
@@ -64,13 +64,24 @@ contract SocialMedia {
     }
     
     // function unlikePost(uint _postId)
-
+    function isFollowing(address _follower, address _user) internal view returns (bool) {
+    User storage user = allUsers[_user];
+    for (uint256 i = 0; i < user.followers.length; i++) {
+        if (user.followers[i] == _follower) {
+            return true;
+        }
+    }
+    
+    // If the sender's address is not found in the followers list, return false
+    return false;
+}
     function followUser(address _user) external {
         require(walletExists(_user), "User doesn't exist");
+        require(!isFollowing(msg.sender, _user), "You are already following this user");
         User storage user=allUsers[_user];
         user.followers.push(msg.sender);
         User storage follower=allUsers[msg.sender];
-        follower.followers.push(_user);
+        follower.following.push(_user);
     }
 
     function commentPost(uint _postId, string memory _comment) external{
@@ -91,6 +102,8 @@ contract SocialMedia {
     function createUser(string memory _username) external {
         require(!walletExists(msg.sender), "User already exists");
         usernames[msg.sender] = _username;
+        User storage newUser=allUsers[msg.sender];
+        newUser.username=_username;
     }
     function returnUserPost(address[] memory _users) view external returns(Post[] memory){
         Post[] memory posts=new Post[](postCount);
@@ -103,4 +116,19 @@ contract SocialMedia {
         }
         return posts;
     }
+    function getPostsForUser(address _user) external view returns (Post[] memory) {
+    User storage user = allUsers[_user];
+    uint totalFollowing = user.following.length;
+    Post[] memory posts = new Post[](postCount);
+    uint c=0;
+    for (uint i = 0; i < totalFollowing; i++) {
+        address followingUser = user.following[i];
+        uint totalPosts = userPosts[followingUser].length;
+        for (uint j = 0; j < totalPosts; j++) {
+            posts[c++]=(userPosts[followingUser][i]);
+        }
+    }
+    
+    return posts;
+}
 }
